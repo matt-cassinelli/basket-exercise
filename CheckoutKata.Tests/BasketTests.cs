@@ -45,17 +45,25 @@ public class BasketTests {
     }
 
     [Fact]
-    public void Can_Add_Product_With_Properties_To_Basket() {
+    public void Can_Add_Product_With_Properties()
+    {
         
-        // Arrange
         var basket = new Basket();
         var product = new Product("A", "Apple");
 
-        // Act
         basket.Add(product);
 
-        // Assert
         basket.Contents.Should().Contain(product);
     }
 
+    [Fact]
+    public void When_Products_Added_Then_Total_Calculated()
+    {
+        var basket = new Basket();
+
+        basket.Add(new Product("A", "Apple", 0.41));
+        basket.Add(new Product("B", "Washing Machine", 210.00));
+
+        basket.Total.Should().Be(210.41);
+    }
 }
