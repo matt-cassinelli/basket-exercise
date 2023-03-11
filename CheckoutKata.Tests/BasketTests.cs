@@ -38,7 +38,7 @@ public class BasketTests {
         var basket = new Basket();
 
         for (int i = 0; i < amountOfProducts; i++) {
-            basket.Add(new Product("A", "Apple"));
+            basket.Add(new Product("A", "Apple", 0.41m));
         }
         
         basket.Quantity.Should().Be(amountOfProducts);
@@ -49,7 +49,7 @@ public class BasketTests {
     {
         
         var basket = new Basket();
-        var product = new Product("A", "Apple");
+        var product = new Product("A", "Apple", 0.41m);
 
         basket.Add(product);
 
@@ -61,9 +61,9 @@ public class BasketTests {
     {
         var basket = new Basket();
 
-        basket.Add(new Product("A", "Apple", 0.41));
-        basket.Add(new Product("B", "Washing Machine", 210.00));
+        basket.Add(new Product("A", "Apple", 0.41m));
+        basket.Add(new Product("B", "Washing Machine", 210.00m));
 
-        basket.Total.Should().Be(210.41);
+        basket.Total.Should().Be(210.41m);
     }
 }
