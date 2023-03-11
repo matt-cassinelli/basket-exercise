@@ -23,7 +23,8 @@ public class BasketTests {
     }
 
     [Fact]
-    public void Given_Missing_Product_When_Call_Add_Then_Throw_ArgumentNullException() {
+    public void Given_Missing_Product_When_Call_Add_Then_Throw_ArgumentNullException()
+    {
         var basket = new Basket();
         Action add = () => basket.Add(null);
         add.Should().Throw<ArgumentNullException>();
@@ -32,7 +33,8 @@ public class BasketTests {
     [Theory]
     [InlineData(1)]
     [InlineData(20)]
-    public void Given_A_Product_When_Call_Add_Then_Quantity_Should_Increment(int amountOfProducts) {
+    public void Given_A_Product_When_Call_Add_Then_Quantity_Should_Increment(int amountOfProducts)
+    {
         var basket = new Basket();
 
         for (int i = 0; i < amountOfProducts; i++) {
@@ -41,4 +43,19 @@ public class BasketTests {
         
         basket.Quantity.Should().Be(amountOfProducts);
     }
+
+    [Theory]
+    [InlineData("Banana")]
+    [InlineData("Matt Spray Paint - White")]
+    public void Given_A_Named_Product_When_Call_Add_Then_Basket_Should_Contain_Name(string name)
+    {
+        var product = new Product(name);
+        product.Name.Should().Be(name);
+    }
+
+    [Fact]
+    public void Can_Add_Product_To_Basket() {
+        var basket = new Basket();
+    }
+
 }
