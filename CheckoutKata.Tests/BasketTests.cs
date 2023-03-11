@@ -33,29 +33,29 @@ public class BasketTests {
     [Theory]
     [InlineData(1)]
     [InlineData(20)]
-    public void Given_A_Product_When_Call_Add_Then_Quantity_Should_Increment(int amountOfProducts)
+    public void Given_Product_Added_Then_Quantity_Should_Increment(int amountOfProducts)
     {
         var basket = new Basket();
 
         for (int i = 0; i < amountOfProducts; i++) {
-            basket.Add(new Product());
+            basket.Add(new Product("A", "Apple"));
         }
         
         basket.Quantity.Should().Be(amountOfProducts);
     }
 
-    [Theory]
-    [InlineData("Banana")]
-    [InlineData("Matt Spray Paint - White")]
-    public void Given_A_Named_Product_When_Call_Add_Then_Basket_Should_Contain_Name(string name)
-    {
-        var product = new Product(name);
-        product.Name.Should().Be(name);
-    }
-
     [Fact]
-    public void Can_Add_Product_To_Basket() {
+    public void Can_Add_Product_With_Properties_To_Basket() {
+        
+        // Arrange
         var basket = new Basket();
+        var product = new Product("A", "Apple");
+
+        // Act
+        basket.Add(product);
+
+        // Assert
+        basket.Contents.Should().Contain(product);
     }
 
 }

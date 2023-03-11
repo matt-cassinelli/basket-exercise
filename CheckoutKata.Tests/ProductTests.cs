@@ -2,17 +2,12 @@ namespace CheckoutKata.Tests;
 
 public class ProductTests {
 
-    [Fact]
-    public void Can_Construct()
-    {
-        var product = new Product();
-    }
-
     [Theory]
-    [InlineData("Banana")]
-    [InlineData("Matt Spray Paint - White")]
-    public void Can_Construct_With_Name(string name) {
-        var product = new Product(name);
+    [InlineData("A", "Banana")]
+    [InlineData("B", "Matt Spray Paint - White")]
+    public void When_Construct_Product_It_Holds_Properties(string sku, string name) {
+        var product = new Product(sku, name);
+        product.Sku.Should().Be(sku);
         product.Name.Should().Be(name);
     }
 

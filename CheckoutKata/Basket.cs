@@ -1,6 +1,7 @@
 ﻿namespace CheckoutKata;
 
 public class Basket {
+
     public decimal Total => 0;
     public List<Product> Contents = new List<Product>();
     public int Quantity => Contents.Count();
@@ -11,8 +12,5 @@ public class Basket {
         else
             throw new ArgumentNullException();
     }
-}
-
-public class Product {
 
 }
