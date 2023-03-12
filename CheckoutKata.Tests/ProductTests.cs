@@ -1,7 +1,7 @@
 namespace CheckoutKata.Tests;
 
-public class ProductTests {
-
+public class ProductTests
+{
     [Theory]
     [InlineData("A", "Banana", 0.15)]
     [InlineData("B", "Matt Spray Paint - White", 9.00)]
@@ -10,5 +10,4 @@ public class ProductTests {
         product.Sku.Should().Be(sku);
         product.Name.Should().Be(name);
     }
-
 }

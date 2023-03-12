@@ -66,4 +66,5 @@ public class BasketTests {
 
         basket.Total.Should().Be(210.41m);
     }
+
 }
