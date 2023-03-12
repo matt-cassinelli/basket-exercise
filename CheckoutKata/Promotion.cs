@@ -2,7 +2,6 @@
 
 public class Promotion
 {
-    private readonly int _batchSize;
     private readonly decimal _originalUnitPrice;
     private readonly decimal? _fixedFee;
     private readonly decimal? _multiplier;
@@ -11,7 +10,7 @@ public class Promotion
     {
         Name = name;
         ForSku = forSku;
-        _batchSize = batchSize;
+        BatchSize = batchSize;
         _originalUnitPrice = originalUnitPrice;
         _fixedFee = fixedFee;
         _multiplier = multiplier;
@@ -19,15 +18,18 @@ public class Promotion
 
     public string Name { get; }
     public string ForSku { get; }
+    public int BatchSize { get; }
     public decimal Discount
     {
         get
         {
-            if (_fixedFee != null)
-                return (decimal)((_batchSize * _originalUnitPrice) - _fixedFee);
+            var withoutDiscount = BatchSize * _originalUnitPrice;
+
+            if (_fixedFee.HasValue)
+                return withoutDiscount - _fixedFee.Value;
 
             if (_multiplier.HasValue)
-                return (decimal)(_batchSize * _originalUnitPrice * _multiplier);
+                return withoutDiscount - (withoutDiscount * _multiplier.Value);
 
             return 0;
         }
