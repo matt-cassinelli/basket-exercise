@@ -14,11 +14,9 @@
   To clarify, if 3 lots of this item are added to the basket then a 25% deduction is only applied to the total cost of 2.
 
 * Items are priced individually.
+
 * The pricing changes frequently, so pricing should be independent of the checkout.
-* Commit frequently to show approach taken
-* Complete Kata in C#
-* Demonstrate your understanding of good coding, testing, and design practices
-* Feel free to provide any explanation or decisions taken in the readme file
+
 
 |  Item SKU  |  Unit Price  |  Promotions                              |
 |------------|--------------|------------------------------------------|
